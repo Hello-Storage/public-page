@@ -1,7 +1,7 @@
-import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import SplineLoader from "@splinetool/loader";
 import { useEffect, useRef } from "react";
+import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import SplineLoader from "@splinetool/loader";
 
 const ThreeDScene = () => {
   const containerRef = useRef(null);
@@ -36,7 +36,25 @@ const ThreeDScene = () => {
     // renderer
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); // enable alpha for transparent background
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setAnimationLoop(animate);
+
+    // orbit controls
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.125;
+
+    function animate() {
+      renderer.setAnimationLoop(() => {
+        controls.update();
+
+        // rotation
+        if (scene) {
+          scene.rotation.y += 0.0003;
+        }
+
+        renderer.render(scene, camera);
+      });
+    }
+
     containerRef.current.appendChild(renderer.domElement);
 
     // scene settings
@@ -46,12 +64,6 @@ const ThreeDScene = () => {
     scene.background = null; // remove background
     renderer.setClearAlpha(0);
 
-    // orbit controls
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.125;
-
-    window.addEventListener("resize", onWindowResize);
     function onWindowResize() {
       camera.left = window.innerWidth / -2;
       camera.right = window.innerWidth / 2;
@@ -61,16 +73,9 @@ const ThreeDScene = () => {
       renderer.setSize(window.innerWidth, window.innerHeight);
     }
 
-    function animate(time) {
-      controls.update();
+    window.addEventListener("resize", onWindowResize);
 
-      // rotation
-      if (scene) {
-        scene.rotation.y += 0.0003;
-      }
-
-      renderer.render(scene, camera);
-    }
+    animate();
   }, []);
 
   return <div ref={containerRef} />;
