@@ -29,12 +29,19 @@ const ThreeDScene = () => {
     loader.load(
       "https://prod.spline.design/kb51V9Mnzlry9yRS/scene.splinecode",
       (splineScene) => {
+        if (window.innerWidth < 600) {
+          // For mobile screens
+          splineScene.scale.set(0.4, 0.4, 0.4);
+        } else {
+          // For larger screens
+          splineScene.scale.set(1, 1, 1);
+        }
         scene.add(splineScene);
       }
     );
 
     // renderer
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); // enable alpha for transparent background
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     // orbit controls
@@ -42,13 +49,19 @@ const ThreeDScene = () => {
     controls.enableDamping = true;
     controls.dampingFactor = 0.125;
 
+    let time = 0;
+
     function animate() {
       renderer.setAnimationLoop(() => {
         controls.update();
 
         // rotation
         if (scene) {
-          scene.rotation.y += 0.0003;
+          // Increase time
+          time += 0.003;
+
+          // Sine function oscillates between -1 and 1, scale it by desired range
+          scene.rotation.y = Math.sin(time) * 0.4;
         }
 
         renderer.render(scene, camera);
@@ -71,6 +84,18 @@ const ThreeDScene = () => {
       camera.bottom = window.innerHeight / -2;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
+
+      // Update the scale of the object
+      if (scene && scene.children.length > 0) {
+        const splineScene = scene.children[0];
+        if (window.innerWidth < 600) {
+          // For mobile screens
+          splineScene.scale.set(0.3, 0.3, 0.3);
+        } else {
+          // For larger screens
+          splineScene.scale.set(0.5, 0.5, 0.5);
+        }
+      }
     }
 
     window.addEventListener("resize", onWindowResize);

@@ -6,24 +6,21 @@ import ThreeDScene from "../components/homepage/hello3d";
 const Hero = () => {
   return (
     <section className="relative h-screen">
-      <div className="absolute inset-0 z-10">
+      <div className="absolute inset-0 z-10 -mt-40 md:mt-0">
         <ThreeDScene />
       </div>
-      <div className="absolute inset-0 z-20 px-6 grid place-items-center text-center pointer-events-none">
-        <div
-          className="max-w-lg mx-auto p-8 shadow-lg rounded-2xl border border-gray-700"
-          style={{
-            backgroundColor: "rgba(0, 0, 0, 0.7)",
-            backdropFilter: "blur(10px)",
-          }}
-        >
-          <div className="flex flex-col">
-            <h1 className="mb-2 text-xl text-gray-300">
+      <div
+        className="absolute inset-0 z-20 px-6 flex flex-col justify-center mt-40 md:justify-end items-center pointer-events-none"
+        style={{ paddingBottom: "17vh" }}
+      >
+        <div className="max-w-lg mx-auto p-6 shadow-lg bg-black rounded-2xl border border-gray-700 flex flex-col items-center">
+          <div className="flex flex-col items-center">
+            <h1 className="mb-2 text-lg text-gray-300 text-center">
               For decades, the internet has been controlled and monopolized by
               very few tech giants.{" "}
               <span className="italic">Our data is our asset, not theirs.</span>
             </h1>
-            <p className="text-white text-2xl mb-6 font-medium">
+            <p className="text-white text-xl mb-6 font-medium text-center">
               Secure and control your storage
             </p>
           </div>
