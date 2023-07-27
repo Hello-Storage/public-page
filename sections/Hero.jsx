@@ -25,6 +25,7 @@ const Hero = () => {
 
       const data = await response.json();
       console.log(data);
+      setShowModal(false);
     } catch (error) {
       console.log(error);
     }
@@ -83,7 +84,7 @@ const Hero = () => {
                     required
                     className="text-white bg-gray-800 rounded-lg border border-gray-700 my-4 p-2 w-full sm:w-2/3"
                   />
-                  <button type="submit" onClick={() => setShowModal(false)} className="pointer-events-auto relative overflow-hidden rounded-lg bg-black px-24 py-6 ring-red-500/50 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2">
+                  <button type="submit" className="pointer-events-auto relative overflow-hidden rounded-lg bg-black px-24 py-6 ring-red-500/50 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2">
                     <span className="absolute inset-px z-10 grid place-items-center rounded-lg bg-black bg-gradient-to-t from-neutral-800 text-white-400">
                       Submit
                     </span>
