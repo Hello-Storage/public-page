@@ -13,7 +13,7 @@ const Footer = () => (
         <i className="fab fa-github text-gray-300 hover:text-gray-500" />
       </a>
     </div>
-    © 2023 Hello.app. All rights reserveda
+    © 2023 Hello.app. All rights reserved.
   </footer>
 );
 
