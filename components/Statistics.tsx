@@ -132,7 +132,7 @@ const Statistics = () => {
             <label className="block mr-2">Total Used Storage</label>
             <IconWithTooltip
               IconComponent={GrCircleInformation}
-              tooltipText="Total data stored by all users"
+              tooltipText="Total data size stored by all users"
             />
           </div>
           <label className="text-1x8 font-semibold text-black block">
@@ -180,7 +180,7 @@ const Statistics = () => {
             <label className="block mr-2">Average File Size</label>
             <IconWithTooltip
               IconComponent={GrCircleInformation}
-              tooltipText="The total media of the files"
+              tooltipText="The average size of all the files"
             />
           </div>
           <label className="text-1x8 font-semibold text-black block">
@@ -194,7 +194,7 @@ const Statistics = () => {
             <label className="block mr-2">Encrypted Files </label>
             <IconWithTooltip
               IconComponent={GrCircleInformation}
-              tooltipText="Total secure encrypted files"
+              tooltipText="Total client-side encrypted files"
             />
           </div>
           <label className="text-1x8 font-semibold text-black block">
@@ -208,7 +208,7 @@ const Statistics = () => {
             <label className="block mr-2">Public Files</label>
             <IconWithTooltip
               IconComponent={GrCircleInformation}
-              tooltipText="The total amount of public files"
+              tooltipText="Total amount of public files"
             />
           </div>
           <label className="text-1x8 font-semibold text-black block">
@@ -228,7 +228,7 @@ const Statistics = () => {
           <h1 className="w-full text-2xl text-center">Welcome to the Hello Decentralized Infrastructure statistics page!</h1>
           <br />
           <p className="text-xl text-justify">
-            Here you can find all the important information about our infrastructure. As you can see from the columns above, we have a total of {totalusedstorage} bytes of files stored on our network. Out of these, {encryptedfiles} files are encrypted and {publicfiles} files are public. We take pride in our secure and decentralized infrastructure, and we're constantly working to improve it. Thank you for choosing Hello Decentralized Infrastructure!
+            Here you can find all the important information about our infrastructure. As you can see from the columns above, we have a total of {formatBytes(totalusedstorage)} of files stored on our network. Out of these, {encryptedfiles} files are encrypted and {publicfiles} files are public. We take pride in our secure and decentralized infrastructure, and we're constantly working to improve it. Thank you for choosing Hello Decentralized Infrastructure!
           </p>
         </div>
       </div>
