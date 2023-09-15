@@ -1,26 +1,25 @@
-"use client"
-import { useResizeDetector } from "react-resize-detector";
+"use client";
+
 import { GrCircleInformation } from "react-icons/gr";
 import { useEffect, useState } from "react";
 
+import axios from "axios";
 
 import Image from "next/image";
-import Server_m from './assets/images/Outline/Server_m.png';
-import FileUpload_m from './assets/images/Outline/File-upload_m.png';
-import UserPlus_m from "./assets/images/Outline/User-plus_m.png";
-import File_m from "./assets/images/Outline/File_m.png";
-import Shield_m from "./assets/images/Outline/Shield_m.png";
-import Hotspot_m from "./assets/images/Outline/Hotspot_m.png";
-/*import Chart from "./Components/Chart";*/
-import axios from "axios";
-import React from "react";
+import ServerM from './assets/images/Outline/Server_m.png';
+import FileUploadM from './assets/images/Outline/File-upload_m.png';
+import UserPlusM from "./assets/images/Outline/User-plus_m.png";
+import FileM from "./assets/images/Outline/File_m.png";
+import ShieldM from "./assets/images/Outline/Shield_m.png";
+import HotspotM from "./assets/images/Outline/Hotspot_m.png";
+/* import Chart from "./Components/Chart"; */
 
 type IconWithTooltipProps = {
   IconComponent: any; // Esto es para componentes sin props
   tooltipText: string;
 };
 
-function IconWithTooltip({ IconComponent, tooltipText }: IconWithTooltipProps) {
+const IconWithTooltip = ({ IconComponent, tooltipText }: IconWithTooltipProps) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   return (
@@ -49,10 +48,9 @@ function IconWithTooltip({ IconComponent, tooltipText }: IconWithTooltipProps) {
       )}
     </div>
   );
-}
+};
 
 const Statistics = () => {
-  const { width, height, ref } = useResizeDetector();
   const [upfile, setupfile] = useState("");
   const [msize, setmsize] = useState(0);
   const [encryptedfiles, setencryptedfiles] = useState("");
@@ -66,19 +64,19 @@ const Statistics = () => {
     if (bytes === 0) return '0 Byte';
 
     const k = 1000;
-    const sizes = ['Bytes', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
+    const sizes = [' Bytes', ' KiB', ' MiB', ' GiB', ' TiB', ' PiB', ' EiB', ' ZiB', ' YiB'];
 
     const i = Math.floor(Math.log(bytes) / Math.log(k));
 
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    return parseFloat((bytes / (k ** i)).toFixed(2)) + sizes[i];
   }
 
   const fetchData = () => {
     // Esta URL debe ser la ruta de tu backend
-    const apiUrl = "https://api-staging.joinhello.app/api";
+    const apiUrl = "https://api-staging.joinhello.app/api/statistics";
 
     axios
-      .get(apiUrl + "/statistics")
+      .get(apiUrl)
       .then((response) => {
         setupfile(response.data.UploadedFile);
         setmsize(response.data.CountMediumSizeFiles);
@@ -93,7 +91,7 @@ const Statistics = () => {
         console.error("There was an error loading data", error);
         setLoading(false);
       });
-  }
+  };
 
   useEffect(() => {
     fetchData();
@@ -117,10 +115,19 @@ const Statistics = () => {
           Go to Hello Staging
         </a>
       </div>
+      {
+        loading && (
+          <div className="text-black flex flex-col md:flex-row justify-center items-center">
+            <h1 className="text-xl font-medium text-center mt-10 md:mr-4">
+              Loading...
+            </h1>
+          </div>
+        )
+      }
       <hr className="my-8" />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-8 mx-auto max-w-screen-xl">
         <div className="border bg-blue-100 rounded-lg p-2.5 flex flex-col items-center justify-center">
-          <Image alt="servericon" src={Server_m} className="mb-2" />
+          <Image alt="servericon" src={ServerM} className="mb-2" />
           <div className="flex items-center mb-2">
             <label className="block mr-2">Total Used Storage</label>
             <IconWithTooltip
@@ -135,7 +142,7 @@ const Statistics = () => {
 
         <div className="border bg-blue-100 rounded-lg p-3 flex flex-col items-center justify-center">
           <Image alt="fileuploadicon"
-            src={FileUpload_m}
+            src={FileUploadM}
             className="mb-2"
           />
           <div className="flex items-center mb-2">
@@ -152,7 +159,7 @@ const Statistics = () => {
 
         <div className="border bg-blue-100 rounded-lg p-3 flex flex-col items-center justify-center">
           <Image alt="userplusicon"
-            src={UserPlus_m}
+            src={UserPlusM}
             className="mb-2"
           />
           <div className="flex items-center mb-2">
@@ -168,7 +175,7 @@ const Statistics = () => {
         </div>
 
         <div className="border bg-blue-100 rounded-lg p-3 flex flex-col items-center justify-center">
-          <Image alt="filem" src={File_m} className="mb-2" />
+          <Image alt="filem" src={FileM} className="mb-2" />
           <div className="flex items-center mb-2">
             <label className="block mr-2">Average File Size</label>
             <IconWithTooltip
@@ -182,7 +189,7 @@ const Statistics = () => {
         </div>
 
         <div className="border bg-blue-100 rounded-lg p-3 flex flex-col items-center justify-center">
-          <Image alt="shield" src={Shield_m} className="mb-2" />
+          <Image alt="shield" src={ShieldM} className="mb-2" />
           <div className="flex items-center mb-2">
             <label className="block mr-2">Encrypted Files </label>
             <IconWithTooltip
@@ -196,7 +203,7 @@ const Statistics = () => {
         </div>
 
         <div className="border bg-blue-100 rounded-lg p-3 flex flex-col items-center justify-center">
-          <Image alt="hotspot" src={Hotspot_m} className="mb-2" />
+          <Image alt="hotspot" src={HotspotM} className="mb-2" />
           <div className="flex items-center mb-2">
             <label className="block mr-2">Public Files</label>
             <IconWithTooltip
@@ -213,7 +220,7 @@ const Statistics = () => {
       <div className="mt-10 mb-5 flex justify-center">
         <div style={{ width: "70%" }}>
           {" "}
-          {/*{/*<Chart />*/}
+          {/* <Chart /> */}
         </div>
       </div>
       <div className="mt-10 mb-5 flex justify-center">
@@ -227,6 +234,6 @@ const Statistics = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Statistics;

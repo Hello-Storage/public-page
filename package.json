@@ -12,7 +12,7 @@
   "dependencies": {
     "@splinetool/loader": "^0.9.395",
     "axios": "^1.5.0",
-    "eslint-config-next": "13.0.3",
+    "eslint-config-next": "^13.4.19",
     "framer-motion": "^7.6.7",
     "next": "13.0.3",
     "postcss": "^8.4.29",
@@ -27,12 +27,14 @@
   "devDependencies": {
     "@types/node": "20.6.1",
     "@types/react": "18.2.21",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
     "autoprefixer": "^10.4.15",
     "eslint": "^8.27.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.6.1",
-    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "typescript": "5.2.2"
   }
