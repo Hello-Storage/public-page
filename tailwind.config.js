@@ -3,9 +3,9 @@ const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   content: [
-    "./app/**/*.{html,js,jsx}",
-    "./components/**/*.{html,js,jsx}",
-    "./sections/**/*.{html,js,jsx}",
+    "./app/**/*.{html,js,jsx,tsx}",
+    "./components/**/*.{html,js,jsx,tsx}",
+    "./sections/**/*.{html,js,jsx,tsx}",
     "./styles/**/*.{js,jsx}",
   ],
   mode: "jit",
