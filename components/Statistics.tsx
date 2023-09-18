@@ -76,8 +76,7 @@ const Statistics = () => {
   const [isScrolledToBottom, setIsScrolledToBottom] = useState(false);
 
   const handleScroll = (e) => {
-    const nearBottom =
-      e.target.scrollHeight - e.target.scrollTop <= e.target.clientHeight + 5;
+    const nearBottom = e.target.scrollHeight - e.target.scrollTop <= e.target.clientHeight + 5;
     setIsScrolledToBottom(nearBottom);
   };
 
@@ -345,6 +344,7 @@ const Statistics = () => {
           </h1>
           <div className="flex justify-center mt-">
             <button
+              type="button"
               className="bg-blue-300 p-2 rounded-full"
               onClick={() => {
                 const container = document.querySelector(
