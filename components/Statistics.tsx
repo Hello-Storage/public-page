@@ -2,16 +2,23 @@
 
 import { GrCircleInformation } from "react-icons/gr";
 import { useEffect, useState } from "react";
+import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 
 import axios from "axios";
 
 import Image from "next/image";
-import ServerM from './assets/images/Outline/Server_m.png';
-import FileUploadM from './assets/images/Outline/File-upload_m.png';
+import ServerM from "./assets/images/Outline/Server_m.png";
+import FileUploadM from "./assets/images/Outline/File-upload_m.png";
 import UserPlusM from "./assets/images/Outline/User-plus_m.png";
 import FileM from "./assets/images/Outline/File_m.png";
 import ShieldM from "./assets/images/Outline/Shield_m.png";
 import HotspotM from "./assets/images/Outline/Hotspot_m.png";
+import PublicFolder from "./assets/images/Outline/folder_m.png";
+import Jpg from "./assets/images/Outline/png_icon_m.png";
+import Png from "./assets/images/Outline/picture_m.png";
+import Txt from "./assets/images/Outline/document_m.png";
+import Pdf from "./assets/images/Outline/invoice_m.png";
+import SharedFiles from "./assets/images/Outline/shared-box_m.png";
 /* import Chart from "./Components/Chart"; */
 
 type IconWithTooltipProps = {
@@ -19,7 +26,10 @@ type IconWithTooltipProps = {
   tooltipText: string;
 };
 
-const IconWithTooltip = ({ IconComponent, tooltipText }: IconWithTooltipProps) => {
+const IconWithTooltip = ({
+  IconComponent,
+  tooltipText,
+}: IconWithTooltipProps) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   return (
@@ -56,24 +66,45 @@ const Statistics = () => {
   const [encryptedfiles, setencryptedfiles] = useState("");
   const [publicfiles, setpublicfiles] = useState("");
   const [totalusers, settotalusers] = useState("");
+  const [publicfolders, setpublicfolders] = useState("");
+  const [textfiles, settextfiles] = useState("");
+  const [jpgfiles, setjpgfiles] = useState("");
+  const [pngfiles, setpngfiles] = useState("");
+  const [pdffiles, setpdffiles] = useState("");
   const [totalusedstorage, settotalusedstorage] = useState(0);
-
   const [loading, setLoading] = useState(true);
+  const [isScrolledToBottom, setIsScrolledToBottom] = useState(false);
+
+  const handleScroll = (e) => {
+    const nearBottom =
+      e.target.scrollHeight - e.target.scrollTop <= e.target.clientHeight + 5;
+    setIsScrolledToBottom(nearBottom);
+  };
 
   function formatBytes(bytes: number): string {
-    if (bytes === 0) return '0 Byte';
+    if (bytes === 0) return "0 Byte";
 
     const k = 1000;
-    const sizes = [' Bytes', ' KiB', ' MiB', ' GiB', ' TiB', ' PiB', ' EiB', ' ZiB', ' YiB'];
+    const sizes = [
+      " Bytes",
+      " KiB",
+      " MiB",
+      " GiB",
+      " TiB",
+      " PiB",
+      " EiB",
+      " ZiB",
+      " YiB",
+    ];
 
     const i = Math.floor(Math.log(bytes) / Math.log(k));
 
-    return parseFloat((bytes / (k ** i)).toFixed(2)) + sizes[i];
+    return parseFloat((bytes / k ** i).toFixed(2)) + sizes[i];
   }
 
   const fetchData = () => {
     // Esta URL debe ser la ruta de tu backend
-    const apiUrl = "https://api-staging.joinhello.app/api/statistics";
+    const apiUrl = "http://172.28.250.215:8080/api/statistics";
 
     axios
       .get(apiUrl)
@@ -84,6 +115,13 @@ const Statistics = () => {
         setencryptedfiles(response.data.EncryptedFiles);
         setpublicfiles(response.data.PublicFiles);
         settotalusedstorage(response.data.TotalUsedStorage);
+        setpublicfolders(response.data.PublicFolders);
+        setjpgfiles(response.data.CountJpgFiles);
+        setpngfiles(response.data.CountPngFiles);
+        setpdffiles(response.data.CountPdfFiles);
+
+        settextfiles(response.data.CountTxtFiles);
+
         console.log(response.data);
         setLoading(false);
       })
@@ -103,7 +141,15 @@ const Statistics = () => {
   }, []);
 
   return (
-    <div className="text-black relative h-full" style={{ backgroundColor: "white" }}>
+    <div
+      className="text-black relative h-full overflow-y-auto"
+      onScroll={handleScroll}
+      style={{
+        backgroundColor: "white",
+        maxHeight: "100vh",
+        paddingBottom: "45px",
+      }}
+    >
       <div className="text-black flex flex-col md:flex-row justify-center items-center">
         <h1 className="text-xl font-medium text-center mt-10 md:mr-4">
           Hello Storage Overview
@@ -115,15 +161,13 @@ const Statistics = () => {
           Go to Hello Staging
         </a>
       </div>
-      {
-        loading && (
-          <div className="text-black flex flex-col md:flex-row justify-center items-center">
-            <h1 className="text-xl font-medium text-center mt-10 md:mr-4">
-              Loading...
-            </h1>
-          </div>
-        )
-      }
+      {loading && (
+        <div className="text-black flex flex-col md:flex-row justify-center items-center">
+          <h1 className="text-xl font-medium text-center mt-10 md:mr-4">
+            Loading...
+          </h1>
+        </div>
+      )}
       <hr className="my-8" />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-8 mx-auto max-w-screen-xl">
         <div className="border bg-blue-100 rounded-lg p-2.5 flex flex-col items-center justify-center">
@@ -141,10 +185,7 @@ const Statistics = () => {
         </div>
 
         <div className="border bg-blue-100 rounded-lg p-3 flex flex-col items-center justify-center">
-          <Image alt="fileuploadicon"
-            src={FileUploadM}
-            className="mb-2"
-          />
+          <Image alt="fileuploadicon" src={FileUploadM} className="mb-2" />
           <div className="flex items-center mb-2">
             <label className="block mr-2 text-black">Files Uploaded</label>
             <IconWithTooltip
@@ -158,10 +199,7 @@ const Statistics = () => {
         </div>
 
         <div className="border bg-blue-100 rounded-lg p-3 flex flex-col items-center justify-center">
-          <Image alt="userplusicon"
-            src={UserPlusM}
-            className="mb-2"
-          />
+          <Image alt="userplusicon" src={UserPlusM} className="mb-2" />
           <div className="flex items-center mb-2">
             <label className="block mr-2">Total Users</label>
             <IconWithTooltip
@@ -215,20 +253,123 @@ const Statistics = () => {
             {publicfiles}
           </label>
         </div>
-      </div>
+        <div className="border bg-blue-100 rounded-lg p-3 flex flex-col items-center justify-center">
+          <Image alt="folder" src={PublicFolder} className="mb-2" />
+          <div className="flex items-center mb-2">
+            <label className="block mr-2">Public Folders</label>
+            <IconWithTooltip
+              IconComponent={GrCircleInformation}
+              tooltipText="Total number of public folders"
+            />
+          </div>
+          <label className="text-1x8 font-semibold text-black block">
+            {publicfolders}
+          </label>
+        </div>
 
-      <div className="mt-10 mb-5 flex justify-center">
-        <div style={{ width: "70%" }}>
-          {" "}
-          {/* <Chart /> */}
+        <div className="border bg-blue-100 rounded-lg p-3 flex flex-col items-center justify-center">
+          <Image alt="shared" src={SharedFiles} className="mb-2" />
+          <div className="flex items-center mb-2">
+            <label className="block mr-2">Shared Files</label>
+            <IconWithTooltip
+              IconComponent={GrCircleInformation}
+              tooltipText="Total number of shared files"
+            />
+          </div>
+          <label className="text-1x8 font-semibold text-black block">-</label>
+        </div>
+        <div className="border bg-blue-100 rounded-lg p-3 flex flex-col items-center justify-center">
+          <Image alt="pdf" src={Pdf} className="mb-2" />
+          <div className="flex items-center mb-2">
+            <label className="block mr-2">Public PDF's</label>
+            <IconWithTooltip
+              IconComponent={GrCircleInformation}
+              tooltipText="Total number of public pdf's files"
+            />
+          </div>
+          <label className="text-1x8 font-semibold text-black block">
+            {pdffiles}
+          </label>
+        </div>
+        <div className="border bg-blue-100 rounded-lg p-3 flex flex-col items-center justify-center">
+          <Image alt="jpg" src={Jpg} className="mb-2" />
+          <div className="flex items-center mb-2">
+            <label className="block mr-2">Public JPG's</label>
+            <IconWithTooltip
+              IconComponent={GrCircleInformation}
+              tooltipText="Total number of public jpg's photos"
+            />
+          </div>
+          <label className="text-1x8 font-semibold text-black block">
+            {jpgfiles}
+          </label>
+        </div>
+        <div className="border bg-blue-100 rounded-lg p-3 flex flex-col items-center justify-center">
+          <Image alt="png" src={Png} className="mb-2" />
+          <div className="flex items-center mb-2">
+            <label className="block mr-2">Public PNG's</label>
+            <IconWithTooltip
+              IconComponent={GrCircleInformation}
+              tooltipText="Total number of public png's photos"
+            />
+          </div>
+          <label className="text-1x8 font-semibold text-black block">
+            {pngfiles}
+          </label>
+        </div>
+
+        <div className="border bg-blue-100 rounded-lg p-3 flex flex-col items-center justify-center">
+          <Image alt="txt" src={Txt} className="mb-2" />
+          <div className="flex items-center mb-2">
+            <label className="block mr-2">Public TXT's File</label>
+            <IconWithTooltip
+              IconComponent={GrCircleInformation}
+              tooltipText="Total number of public txt's files"
+            />
+          </div>
+          <label className="text-1x8 font-semibold text-black block">
+            {textfiles}
+          </label>
         </div>
       </div>
-      <div className="mt-10 mb-5 flex justify-center">
+
+      <div className="mt-2 mb-5 flex justify-center">
+        <div style={{ width: "70%" }}> {/* <Chart /> */}</div>
+      </div>
+      <div className="mt-10 mb-10 flex justify-center">
+        {" "}
+        {/* Cambio aquí: de mb-5 a mb-10 */}
         <div className="max-w-4xl w-full px-4 md:px-0">
-          <h1 className="w-full text-2xl text-center">Welcome to the Hello Decentralized Infrastructure statistics page!</h1>
-          <br />
+          <h1 className="w-full text-2xl text-center mb-9">
+            Welcome to the Hello Decentralized Infrastructure statistics page!
+          </h1>
+          <div className="flex justify-center mt-">
+            <button
+              className="bg-blue-300 p-2 rounded-full"
+              onClick={() => {
+                const container = document.querySelector(
+                  ".text-black.relative.h-full.overflow-y-auto"
+                );
+                if (isScrolledToBottom) {
+                  container.scrollTo(0, 0);
+                } else {
+                  container.scrollTo(0, container.scrollHeight);
+                }
+              }}
+            >
+              {isScrolledToBottom ? <FaArrowUp /> : <FaArrowDown />}
+            </button>
+          </div>
+
           <p className="text-xl text-justify">
-            Here you can find all the important information about our infrastructure. As you can see from the columns above, we have a total of {formatBytes(totalusedstorage)} of files stored on our network. Out of these, {encryptedfiles} files are encrypted and {publicfiles} files are public. We take pride in our secure and decentralized infrastructure, and we're constantly working to improve it. Thank you for choosing Hello Decentralized Infrastructure!
+            Here you can find all the important information about our
+            infrastructure. As you can see from the columns above, we have a
+            total of {formatBytes(totalusedstorage)} of files stored on our
+            network. Out of these, {encryptedfiles} files are encrypted and{" "}
+            {publicfiles} files are public. We take pride in our secure and
+            decentralized infrastructure, and we're constantly working to
+            improve it. Thank you for choosing Hello Decentralized
+            Infrastructure!
           </p>
         </div>
       </div>
