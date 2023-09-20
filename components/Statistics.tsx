@@ -103,7 +103,7 @@ const Statistics = () => {
 
   const fetchData = () => {
     // Esta URL debe ser la ruta de tu backend
-    const apiUrl = "http://172.28.250.215:8080/api/statistics";
+    const apiUrl = "https://api-staging.joinhello.app/api/statistics"
 
     axios
       .get(apiUrl)
