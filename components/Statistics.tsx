@@ -320,7 +320,7 @@ const Statistics = () => {
         <div className="border bg-blue-100 rounded-lg p-3 flex flex-col items-center justify-center">
           <Image alt="txt" src={Txt} className="mb-2" />
           <div className="flex items-center mb-2">
-            <label className="block mr-2">Public TXT's File</label>
+            <label className="block mr-2">Public TXT's</label>
             <IconWithTooltip
               IconComponent={GrCircleInformation}
               tooltipText="Total number of public txt's files"
