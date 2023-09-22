@@ -103,8 +103,10 @@ const Statistics = () => {
 
   const fetchData = () => {
     // Esta URL debe ser la ruta de tu backend
-    const apiUrl = "https://api-staging.joinhello.app/api/statistics";
 
+    // const apiUrl = "https://api-staging.joinhello.app/api/statistics";
+
+    const apiUrl = "http://192.168.1.132:8080/api/statistics";
     axios
       .get(apiUrl)
       .then((response) => {
@@ -129,6 +131,14 @@ const Statistics = () => {
         setLoading(false);
       });
   };
+
+  useEffect(() => {
+    const correctPassword = "hello2023";
+    const enteredPassword = prompt("Enter password to access this page");
+    if (enteredPassword !== correctPassword) {
+      window.location.href = "https://staging.joinhello.app/login";
+    }
+  }, []);
 
   useEffect(() => {
     fetchData();
