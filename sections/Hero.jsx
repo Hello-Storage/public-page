@@ -53,9 +53,9 @@ const Hero = () => {
             </p>
           </div>
 
-          <div className="flex flex-row justify-center items-center mb-6">
-            <button type="button" onClick={() => setShowModal(true)} className="pointer-events-auto relative mr-2 overflow-hidden rounded-lg bg-black px-24 py-6 ring-red-500/50 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2 cursor-emoji">
-              <span className="absolute m-2 inset-px z-10 grid place-items-center rounded-lg bg-black bg-gradient-to-t from-neutral-800 text-neutral-400">
+          <div className="flex flex-col justify-center items-center mb-6">
+            <button type="button" onClick={() => setShowModal(true)} className="pointer-events-auto relative mb-2 overflow-hidden rounded-lg bg-black px-24 py-6 ring-red-500/50 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2 cursor-emoji">
+              <span className="absolute inset-px z-10 grid place-items-center rounded-lg bg-black bg-gradient-to-t from-neutral-800 text-neutral-400">
                 Know more
               </span>
               <span
@@ -63,8 +63,8 @@ const Hero = () => {
                 className="absolute inset-0 z-0 scale-x-[2.0] blur before:absolute before:inset-0 before:top-1/2 before:aspect-square before:animate-disco before:bg-gradient-conic before:from-purple-700 before:via-pink-500 before:to-green-400"
               />
             </button>
-            <button type="button" onClick={() => window.open("https://staging.joinhello.app")} className="pointer-events-auto ml-2 relative overflow-hidden rounded-lg bg-black px-24 py-6 ring-red-500/50 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2 cursor-emoji">
-              <span className="absolute m-2 inset-px z-10 grid place-items-center rounded-lg bg-black bg-gradient-to-t from-neutral-800 text-neutral-400">
+            <button type="button" onClick={() => window.open("https://staging.joinhello.app")} className="pointer-events-auto mt-2 relative overflow-hidden rounded-lg bg-black px-24 py-6 ring-red-500/50 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2 cursor-emoji">
+              <span className="absolute inset-px z-10 grid place-items-center rounded-lg bg-black bg-gradient-to-t from-neutral-800 text-neutral-400">
                 <b>Join beta</b>
               </span>
               <span
