@@ -1,7 +1,7 @@
 "use client";
 
 const Footer = () => (
-  <footer style={{ zIndex: 100 }} className="text-sm text-gray-300 mx-8 md:mx-12 absolute inset-x-0 bottom-10 zIndex-100">
+  <footer style={{ zIndex: 0 }} className="text-sm text-gray-300 mx-8 md:mx-12 absolute inset-x-0 bottom-5">
     <div className="flex space-x-4 p-2 z-60">
       <a href="mailto:team@joinhello.app" target="_blank" rel="noopener noreferrer">
         <i className="zIndex-100 fas fa-envelope text-gray-300 hover:text-gray-500" />
