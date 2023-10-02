@@ -83,7 +83,7 @@ const Statistics = () => {
   function formatBytes(bytes: number): string {
     if (bytes === 0) return "0 Byte";
 
-    const k = 1000;
+    const k = 1024;
     const sizes = [
       " Bytes",
       " KiB",
