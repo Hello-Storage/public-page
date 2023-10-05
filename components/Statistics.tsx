@@ -135,7 +135,7 @@ const Statistics = () => {
     const correctPassword = "hello2023";
     const enteredPassword = prompt("Enter password to access this page");
     if (enteredPassword !== correctPassword) {
-      window.location.href = "https://staging.joinhello.app/login";
+      window.location.href = "https://space.hello.app/login";
     }
   }, []);
 
@@ -163,7 +163,7 @@ const Statistics = () => {
           Hello Storage Overview
         </h1>
         <a
-          href="https://staging.joinhello.app/login"
+          href="https://space.hello.app/login"
           className="text-sm bg-blue-500 text-white py-1 px-3 rounded mt-4 md:mt-10 md:absolute md:top-3 md:right-4"
         >
           Go to Hello Staging
