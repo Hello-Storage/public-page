@@ -12,7 +12,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "primary-black": "#0D1117",
+        "primary-black": "#000000",
         "secondary-white": "#c7c7c7",
       },
       transitionTimingFunction: {
@@ -35,6 +35,7 @@ module.exports = {
     },
   },
   plugins: [
+    require("tailwindcss-3d"),
     plugin(({ addUtilities }) => {
       addUtilities({
         ".cursor-emoji": {

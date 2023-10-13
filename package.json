@@ -36,6 +36,7 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "tailwindcss-3d": "^1.0.1",
     "typescript": "5.2.2"
   }
 }
