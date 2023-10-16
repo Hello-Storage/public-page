@@ -37,7 +37,7 @@ const Page = () => {
         }}
       />
       <Navbar />
-      <Hero className="flex-grow" />
+      <Hero />
       <Footer />
     </div>
   );

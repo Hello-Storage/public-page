@@ -98,15 +98,15 @@ const Hero = () => {
           alt="Illustration"
         />
       </div>
-      <section className="relative flex flex-col justify-start mt-8 items-center">
-        <div className="max-w-3xl flex flex-col gap-10 justify-center text-center mb-8">
+      <section className="relative flex flex-col justify-start mt-8 items-center mx-8 md:mx-0">
+        <div className="max-w-3xl flex flex-col md:gap-10 gap-5 justify-center text-center mb-8">
           <h1 className="font-extrabold tracking-tight text-white md:text-6xl text-4xl text-center antialiased">
             dream with us{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-sky-500">
               upload anything you want
             </span>
           </h1>
-          <p className="text-gray-400 text-xl">
+          <p className="text-gray-400 md:text-xl text-md">
             click on the box or drag and drop any file
           </p>
         </div>
@@ -133,7 +133,7 @@ const Hero = () => {
             />
           </div>
         </div>
-        <div className="flex items-center gap-4 mt-16">
+        <div className="flex items-center gap-4 md:mt-16 mt-8">
           <button className="px-12 py-3 bg-gradient-to-b from-violet-500 to-violet-800 hover:cursor-pointer rounded-xl hover:from-violet-600 hover:to-violet-900">
             About
           </button>
