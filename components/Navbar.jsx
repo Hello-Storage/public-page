@@ -12,7 +12,7 @@ const Navbar = () => (
     className="p-8 relative z-10"
   >
     <div className="relative w-full flex justify-between">
-      <p className="text-2xl font-semibold text-white flex items-center gap-2">
+      <p className="text-2xl font-semibold text-white flex items-center gap-2 font-[outfit]">
         {" "}
         hello.app
         <Image
@@ -24,9 +24,9 @@ const Navbar = () => (
       </p>
       <button
         type="button"
-        className="md:px-10 md:py-3 py-2 px-6 bg-gradient-to-b from-purple-500 to-purple-800 hover:cursor-pointer rounded-xl hover:from-purple-600 hover:to-purple-900"
+        className="md:px-10 md:py-3 py-2 px-6 bg-gradient-to-b from-violet-500 to-violet-800 hover:cursor-pointer rounded-xl hover:from-violet-600 hover:to-violet-900"
       >
-        launch app
+        Launch app
       </button>
     </div>
   </motion.nav>

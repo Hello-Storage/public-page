@@ -29,6 +29,7 @@
     "@types/react": "18.2.21",
     "@typescript-eslint/eslint-plugin": "^6.7.0",
     "@typescript-eslint/parser": "^6.7.0",
+    "@xpd/tailwind-3dtransforms": "^1.0.3",
     "autoprefixer": "^10.4.15",
     "eslint": "^8.27.0",
     "eslint-config-airbnb": "^19.0.4",
