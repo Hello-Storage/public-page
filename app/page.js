@@ -21,10 +21,11 @@ const Page = () => {
   }, []);
 
   return (
-    <div className="bg-slate-950 relative overflow-hidden h-screen text-gray-100">
+    <div className="relative overflow-hidden h-screen text-gray-100 bg-slate-950">
+      <div className="absolute inset-0 bg-[url('https://media.publit.io/file/-Pngtree-noise-texture-black-background-1575880.png')] opacity-5"></div>
       <canvas
         data-particle-animation
-        data-particle-quantity="70"
+        data-particle-quantity="100"
         data-particle-staticity="50"
         data-particle-ease="50"
         style={{

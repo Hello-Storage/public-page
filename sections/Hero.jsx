@@ -102,7 +102,7 @@ const Hero = () => {
         <div className="max-w-3xl flex flex-col md:gap-10 gap-5 justify-center text-center mb-8">
           <h1 className="font-extrabold tracking-tight text-white md:text-6xl text-4xl text-center antialiased">
             dream with us{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-sky-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500/80 to-sky-500/80">
               upload anything you want
             </span>
           </h1>
@@ -134,11 +134,13 @@ const Hero = () => {
           </div>
         </div>
         <div className="flex items-center gap-4 md:mt-16 mt-8">
-          <button className="px-12 py-3 bg-gradient-to-b from-violet-500 to-violet-800 hover:cursor-pointer rounded-xl hover:from-violet-600 hover:to-violet-900">
-            About
+          <button class="relative px-12 py-3 rounded-xl bg-gradient-to-b from-violet-500 to-violet-900 hover:from-violet-600 hover:to-violet-900 cursor-pointer">
+            <span class="relative z-10 text-white">About</span>
+            <div class="absolute inset-0 rounded-xl bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-25"></div>
           </button>
-          <button className="px-12 py-3 bg-gradient-to-b from-violet-500 to-violet-800 hover:cursor-pointer rounded-xl hover:from-violet-600 hover:to-violet-900">
-            Stats
+          <button class="relative px-12 py-3 bg-gradient-to-b from-violet-500 to-violet-800 hover:from-violet-600 hover:to-violet-900 rounded-xl cursor-pointer">
+            <span class="relative z-10 text-white">Stats</span>
+            <div class="absolute inset-0 rounded-xl bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-25"></div>
           </button>
         </div>
 
