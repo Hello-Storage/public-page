@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@splinetool/loader": "^0.9.395",
-    "axios": "^1.5.0",
+    "axios": "^1.6.0",
     "eslint-config-next": "^13.4.19",
     "framer-motion": "^7.6.7",
     "next": "13.0.3",
