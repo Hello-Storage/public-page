@@ -106,9 +106,7 @@ const Hero = () => {
               upload anything you want
             </span>
           </h1>
-          <p className="text-gray-400 md:text-xl text-md">
-            click on the box or drag and drop any file
-          </p>
+      
         </div>
         <div
           ref={uploadRef}
@@ -118,28 +116,34 @@ const Hero = () => {
           onDrop={handleFileDrop}
         >
           <div className="relative translate-z-10">
+          <a href="https://hello.app/">
             <img
               src="https://media.publit.io/file/3Dbox.svg"
               alt="Upload Box"
               className="w-[280px] h-[260px] rounded-[2rem]"
             />
             <div className="absolute w-[272px] h-[260px] inset-0 rainbow-border opacity-0 group-hover:opacity-100 transform group-hover:scale-90"></div>{" "}
-            <input
+            {/* <input
               type="file"
               multiple
               accept="image/jpeg, image/png, image/gif, image/webp, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/msword, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel, text/plain, application/zip"
               className="absolute inset-0 cursor-pointer translate-z-10 w-full opacity-0"
               aria-label="Upload Thumbnail"
-            />
+            /> */}
+          </a>
           </div>
         </div>
         <div className="flex items-center gap-4 md:mt-16 mt-8">
           <button class="relative px-12 py-3 rounded-xl bg-gradient-to-b from-violet-500 to-violet-900 hover:from-violet-600 hover:to-violet-900 cursor-pointer">
-            <span class="relative z-10 text-white">About</span>
+          <a href="https://docs.hello.app/">
+          <span class="relative z-10 text-white">About</span>
+          </a>
             <div class="absolute inset-0 rounded-xl bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-25"></div>
           </button>
           <button class="relative px-12 py-3 bg-gradient-to-b from-violet-500 to-violet-800 hover:from-violet-600 hover:to-violet-900 rounded-xl cursor-pointer">
-            <span class="relative z-10 text-white">Stats</span>
+          <a href="https://hello.app/stats">
+          <span class="relative z-10 text-white">Stats</span>
+          </a>
             <div class="absolute inset-0 rounded-xl bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-25"></div>
           </button>
         </div>

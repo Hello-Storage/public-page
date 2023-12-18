@@ -23,18 +23,18 @@ const Footer = () => (
       >
         <i className="h-5 w-5 fab fa-github text-gray-300 hover:text-gray-500" />
       </a>
-      <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+      <a href="https://twitter.com/joinhelloapp" target="_blank" rel="noopener noreferrer">
         <i className="h-5 w-5 fab fa-twitter text-gray-300 hover:text-gray-500" />
       </a>
       <a
-        href="https://www.instagram.com/"
+        href="https://www.instagram.com/joinhelloapp/"
         target="_blank"
         rel="noopener noreferrer"
       >
         <i className="h-5 w-5 fab fa-instagram text-gray-300 hover:text-gray-500" />
       </a>
       <a
-        href="https://www.tiktok.com/"
+        href="https://www.tiktok.com/@gethelloapp"
         target="_blank"
         rel="noopener noreferrer"
       >
