@@ -22,15 +22,14 @@ const Navbar = () => (
           alt="hello beta"
         />
       </p>
-      <a href="https://www.hello.app" >
-  <button
-    type="button"
-    className="md:px-10 md:py-3 py-2 px-6 bg-gradient-to-b from-violet-500 to-violet-800 hover:cursor-pointer rounded-xl hover:from-violet-600 hover:to-violet-900"
-  >
-    Launch app
-  </button>
-</a>
-
+      <a href="https://www.hello.app">
+        <button
+          type="button"
+          className="md:px-10 md:py-3 py-2 px-6 bg-gradient-to-b from-violet-500 to-violet-800 hover:cursor-pointer rounded-xl hover:from-violet-600 hover:to-violet-900"
+        >
+          Launch app
+        </button>
+      </a>
     </div>
   </motion.nav>
 );
