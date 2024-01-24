@@ -71,6 +71,7 @@ const Hero = () => {
     }
   };
 
+
   return (
     <div>
       <div
@@ -134,18 +135,16 @@ const Hero = () => {
           </div>
         </div>
         <div className="flex items-center gap-4 md:mt-16 mt-8">
-          <button class="relative px-12 py-3 rounded-xl bg-gradient-to-b from-violet-500 to-violet-900 hover:from-violet-600 hover:to-violet-900 cursor-pointer">
-          <a href="https://docs.hello.app/">
-          <span class="relative z-10 text-white">About</span>
-          </a>
-            <div class="absolute inset-0 rounded-xl bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-25"></div>
-          </button>
-          <button class="relative px-12 py-3 bg-gradient-to-b from-violet-500 to-violet-800 hover:from-violet-600 hover:to-violet-900 rounded-xl cursor-pointer">
-          <a href="https://hello.app/stats">
-          <span class="relative z-10 text-white">Stats</span>
-          </a>
-            <div class="absolute inset-0 rounded-xl bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-25"></div>
-          </button>
+        <a href="https://docs.hello.app/" class="relative px-12 py-3 rounded-xl bg-gradient-to-b from-violet-500 to-violet-900 hover:from-violet-600 hover:to-violet-900 cursor-pointer inline-block">
+  <span class="relative z-10 text-white">About</span>
+  <div class="absolute inset-0 rounded-xl bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-25"></div>
+</a>
+
+<a href="https://hello.app/stats" class="relative px-12 py-3 bg-gradient-to-b from-violet-500 to-violet-800 hover:from-violet-600 hover:to-violet-900 rounded-xl cursor-pointer inline-block">
+  <span class="relative z-10 text-white">Stats</span>
+  <div class="absolute inset-0 rounded-xl bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-25"></div>
+</a>
+
         </div>
 
         {showModal && (
